@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Deimos Laboratories | Advancing Human Potential</title>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Source+Sans+3:wght@300;400;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #0a1628;
+    --blue: #1a3a6b;
+    --accent: #c8a951;
+    --light: #f4f1eb;
+    --grey: #8a8a8a;
+    --red: #8b1a1a;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Source Sans 3', sans-serif; background: var(--light); color: var(--navy); }
+  nav {
+    background: var(--navy);
+    padding: 0 60px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 70px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+  .logo { font-family: 'Libre Baskerville', serif; color: white; font-size: 1.2rem; letter-spacing: 2px; text-transform: uppercase; }
+  .logo span { color: var(--accent); }
+  nav ul { list-style: none; display: flex; gap: 30px; }
+  nav ul a { color: #ccc; text-decoration: none; font-size: 0.85rem; letter-spacing: 1px; text-transform: uppercase; transition: color 0.2s; cursor: pointer; }
+  nav ul a:hover { color: var(--accent); }
+  .hero { background: var(--navy); color: white; padding: 100px 60px; position: relative; overflow: hidden; }
+  .hero::before { content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: repeating-linear-gradient(0deg, transparent, transparent 40px, rgba(255,255,255,0.015) 40px, rgba(255,255,255,0.015) 41px); }
+  .hero-inner { position: relative; max-width: 700px; }
+  .hero-tag { display: inline-block; background: var(--accent); color: var(--navy); font-size: 0.7rem; letter-spacing: 3px; text-transform: uppercase; padding: 4px 12px; margin-bottom: 24px; font-weight: 600; }
+  .hero h1 { font-family: 'Libre Baskerville', serif; font-size: 3.2rem; line-height: 1.2; margin-bottom: 24px; }
+  .hero p { font-size: 1.1rem; color: #aab; line-height: 1.7; margin-bottom: 36px; max-width: 560px; }
+  .btn { display: inline-block; background: var(--accent); color: var(--navy); padding: 12px 32px; font-weight: 600; font-size: 0.85rem; letter-spacing: 1px; text-transform: uppercase; text-decoration: none; transition: opacity 0.2s; border: none; cursor: pointer; }
+  .btn:hover { opacity: 0.85; }
+  section { padding: 80px 60px; }
+  .section-label { font-size: 0.7rem; letter-spacing: 4px; text-transform: uppercase; color: var(--accent); margin-bottom: 12px; font-weight: 600; }
+  h2 { font-family: 'Libre Baskerville', serif; font-size: 2rem; margin-bottom: 40px; color: var(--navy); }
+  .about { background: white; }
+  .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+  .about p { color: #444; line-height: 1.8; margin-bottom: 16px; font-size: 1rem; }
+  .about-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+  .stat { border-left: 3px solid var(--accent); padding-left: 16px; }
+  .stat-num { font-family: 'Libre Baskerville', serif; font-size: 2rem; color: var(--navy); }
+  .stat-label { font-size: 0.8rem; color: var(--grey); text-transform: uppercase; letter-spacing: 1px; }
+  .research { background: var(--light); }
+  .research-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  .research-card { background: white; padding: 32px; border-top: 3px solid var(--navy); transition: border-color 0.2s; }
+  .research-card:hover { border-color: var(--accent); }
+  .research-card h3 { font-family: 'Libre Baskerville', serif; font-size: 1.1rem; margin-bottom: 12px; }
+  .research-card p { color: #555; font-size: 0.9rem; line-height: 1.7; }
+  .card-tag { display: inline-block; font-size: 0.65rem; letter-spacing: 2px; text-transform: uppercase; color: var(--accent); margin-bottom: 12px; font-weight: 600; }
+  .news { background: white; }
+  .news-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; }
+  .news-card { border-bottom: 1px solid #ddd; padding-bottom: 24px; }
+  .news-date { font-size: 0.75rem; color: var(--grey); margin-bottom: 8px; text-transform: uppercase; letter-spacing: 1px; }
+  .news-card h3 { font-family: 'Libre Baskerville', serif; font-size: 1rem; margin-bottom: 10px; line-height: 1.4; }
+  .news-card p { font-size: 0.875rem; color: #555; line-height: 1.6; }
+  .read-more { display: inline-block; margin-top: 12px; font-size: 0.75rem; color: var(--accent); text-transform: uppercase; letter-spacing: 1px; text-decoration: none; font-weight: 600; cursor: pointer; }
+  .employees { background: var(--navy); color: white; }
+  .employees h2 { color: white; }
+  .emp-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
+  .emp-card { text-align: center; }
+  .emp-avatar { width: 80px; height: 80px; border-radius: 50%; background: var(--blue); margin: 0 auto 16px; display: flex; align-items: center; justify-content: center; font-family: 'Libre Baskerville', serif; font-size: 1.5rem; color: var(--accent); border: 2px solid var(--blue); }
+  .emp-card h3 { font-size: 0.95rem; margin-bottom: 4px; }
+  .emp-card p { font-size: 0.8rem; color: #88a; }
+  .emp-card.redacted .emp-avatar { background: #111; color: #333; border-color: #222; }
+  .emp-card.redacted h3 { color: #333; background: #333; border-radius: 2px; display: inline-block; }
+  .emp-card.redacted p { color: #2a2a2a; }
+  .contact { background: var(--light); }
+  .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; }
+  .contact-info p { color: #444; line-height: 1.8; margin-bottom: 24px; }
+  .contact-detail { margin-bottom: 16px; }
+  .contact-detail strong { display: block; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px; color: var(--grey); margin-bottom: 4px; }
+  .contact-detail span { color: var(--navy); }
+  .contact-form { display: flex; flex-direction: column; gap: 16px; }
+  .contact-form input, .contact-form textarea { padding: 12px 16px; border: 1px solid #ccc; background: white; font-family: 'Source Sans 3', sans-serif; font-size: 0.9rem; outline: none; transition: border-color 0.2s; }
+  .contact-form input:focus, .contact-form textarea:focus { border-color: var(--navy); }
+  .contact-form textarea { height: 120px; resize: vertical; }
+  footer { background: #060e1a; color: #555; padding: 40px 60px; display: flex; justify-content: space-between; align-items: center; font-size: 0.8rem; }
+  .footer-links { display: flex; gap: 24px; }
+  .footer-links a { color: #555; text-decoration: none; transition: color 0.2s; cursor: pointer; }
+  .footer-links a:hover { color: var(--accent); }
+  .modal-overlay { display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.8); z-index: 1000; align-items: center; justify-content: center; }
+  .modal-overlay.active { display: flex; }
+  .modal { background: var(--navy); border: 1px solid #1a3a6b; padding: 48px; width: 400px; position: relative; }
+  .modal h3 { font-family: 'Libre Baskerville', serif; color: white; font-size: 1.2rem; margin-bottom: 8px; }
+  .modal p { color: #88a; font-size: 0.85rem; margin-bottom: 24px; }
+  .modal input { width: 100%; padding: 12px 16px; background: #060e1a; border: 1px solid #1a3a6b; color: white; font-family: 'Source Sans 3', sans-serif; margin-bottom: 16px; outline: none; font-size: 0.9rem; }
+  .modal input:focus { border-color: var(--accent); }
+  .modal-error { color: #ff4444; font-size: 0.8rem; margin-bottom: 12px; display: none; }
+  .modal-close { position: absolute; top: 16px; right: 20px; color: #555; cursor: pointer; font-size: 1.2rem; background: none; border: none; }
+  .modal-close:hover { color: white; }
+  .admin-panel { display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: #030810; z-index: 2000; overflow-y: auto; padding: 60px; color: #00ff41; font-family: 'Courier New', monospace; }
+  .admin-panel.active { display: block; }
+  .admin-panel h2 { color: #00ff41; font-family: 'Courier New', monospace; font-size: 1rem; margin-bottom: 32px; border-bottom: 1px solid #00ff4133; padding-bottom: 16px; }
+  .admin-back { background: none; border: 1px solid #00ff41; color: #00ff41; padding: 8px 20px; cursor: pointer; font-family: 'Courier New', monospace; margin-bottom: 32px; font-size: 0.85rem; }
+  .admin-back:hover { background: #00ff4111; }
+  .log-entry { margin-bottom: 12px; font-size: 0.8rem; line-height: 1.6; }
+  .timestamp { color: #00ff4177; }
+  .level-warn { color: #ffaa00; }
+  .level-error { color: #ff4444; }
+  .level-info { color: #00ff41; }
+  .redacted-block { background: #111; border: 1px solid #222; padding: 24px; margin: 24px 0; font-size: 0.8rem; }
+  .redact { background: #00ff41; color: #00ff41; user-select: none; }
+  .admin-section { margin-bottom: 40px; }
+  .admin-section h3 { color: #00ff4188; font-size: 0.75rem; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 16px; }
+  #arg-trigger { position: fixed; bottom: 8px; right: 12px; font-size: 0.6rem; color: #c8a95122; cursor: default; user-select: none; font-family: 'Libre Baskerville', serif; letter-spacing: 1px; z-index: 50; }
+  #arg-trigger:hover { color: #c8a95188; }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="logo">Deimos <span>Laboratories</span></div>
+  <ul>
+    <li><a href="#about">About</a></li>
+    <li><a href="#research">Research</a></li>
+    <li><a href="#news">News</a></li>
+    <li><a href="#employees">Our Team</a></li>
+    <li><a href="#contact">Contact</a></li>
+    <li><a href="#" id="adminNavBtn" onclick="document.getElementById('adminModal').classList.add('active');document.getElementById('adminPass').value='';document.getElementById('passError').style.display='none';return false;">Admin</a></li>
+  </ul>
+</nav>
+
+<div class="hero">
+  <div class="hero-inner">
+    <div class="hero-tag">Est. 2009 · London, UK</div>
+    <h1>Advancing the Boundaries of Human Potential</h1>
+    <p>Deimos Laboratories is a leading independent research institution dedicated to unlocking the next chapter of human biology, chemistry, and applied sciences.</p>
+    <a href="#research" class="btn">Explore Our Research</a>
+    <p style="margin-top:32px;font-size:0.85rem;color:#667;font-style:italic;letter-spacing:1px;">"Somewhere, something incredible is waiting to be known."</p>
+  </div>
+</div>
+
+<section class="about" id="about">
+  <div class="about-grid">
+    <div>
+      <div class="section-label">Who We Are</div>
+      <h2>A Decade of Scientific Excellence</h2>
+      <p>Founded in 2009, Deimos Laboratories has grown from a small team of dedicated researchers into one of the UK's most respected independent scientific institutions.</p>
+      <p>Our multidisciplinary approach brings together experts from chemistry, biology, neuroscience and materials science to tackle the challenges that others consider impossible.</p>
+      <p>We believe that the most important discoveries lie at the intersection of disciplines — and we are not afraid to explore uncharted territory.</p>
+    </div>
+    <div class="about-stats">
+      <div class="stat"><div class="stat-num">147</div><div class="stat-label">Researchers</div></div>
+      <div class="stat"><div class="stat-num">312</div><div class="stat-label">Published Papers</div></div>
+      <div class="stat"><div class="stat-num">28</div><div class="stat-label">Active Projects</div></div>
+      <div class="stat"><div class="stat-num">2009</div><div class="stat-label">Founded</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="research" id="research">
+  <div class="section-label">What We Do</div>
+  <h2>Research Departments</h2>
+  <div class="research-grid">
+    <div class="research-card"><div class="card-tag">Department A</div><h3>Applied Chemistry</h3><p>Investigating novel compound synthesis and the chemical properties of naturally occurring substances, with a focus on biological interaction at the cellular level.</p></div>
+    <div class="research-card"><div class="card-tag">Department B</div><h3>Biomedical Research</h3><p>Exploring the frontiers of human biology to develop treatments and enhancements that could redefine what is medically possible within the coming decade.</p></div>
+    <div class="research-card"><div class="card-tag">Department C</div><h3>Neuroscience &amp; Cognition</h3><p>Studying the mechanisms behind human cognition, memory, and neurological response. Our findings have implications for both medicine and human performance.</p></div>
+    <div class="research-card"><div class="card-tag">Department D</div><h3>Materials Science</h3><p>Developing next-generation materials with unique properties for use in medical, industrial and research applications across multiple sectors.</p></div>
+    <div class="research-card"><div class="card-tag">Department E — Restricted</div><h3>Advanced Compound Testing</h3><p>Research details for this department are not available for public disclosure. Please contact our communications team for further information.</p></div>
+    <div class="research-card"><div class="card-tag">Department F</div><h3>Environmental Sciences</h3><p>Analysing the interaction between synthetic compounds and natural ecosystems, ensuring our research meets the highest environmental responsibility standards.</p></div>
+  </div>
+</section>
+
+<section class="news" id="news">
+  <div class="section-label">Latest Updates</div>
+  <h2>News &amp; Publications</h2>
+  <div class="news-grid">
+    <div class="news-card"><div class="news-date">14 October 2019</div><h3>Deimos Laboratories Receives Additional Government Funding for Q4 Research</h3><p>We are pleased to announce a significant funding award which will accelerate our work across Departments A through D into the new year.</p><span class="read-more">Read More →</span></div>
+    <div class="news-card"><div class="news-date">2 September 2019</div><h3>Dr. Vulevaton Presents Findings at the International Chemistry Symposium</h3><p>Our head of Department E delivered a well-received presentation on novel compound behaviour, though specific details remain under review pending publication.</p><span class="read-more">Read More →</span></div>
+    <div class="news-card"><div class="news-date">18 July 2019</div><h3>New Collaboration Announced with University of Edinburgh</h3><p>Deimos Laboratories is proud to partner with the University of Edinburgh's School of Chemistry on a joint research initiative beginning autumn 2019.</p><span class="read-more">Read More →</span></div>
+  </div>
+</section>
+
+<section class="employees" id="employees">
+  <div class="section-label">Our People</div>
+  <h2>Meet the Team</h2>
+  <div class="emp-grid">
+    <div class="emp-card"><div class="emp-avatar">MV</div><h3>Dr. Michael Vulevaton</h3><p>Head of Dept. E — Advanced Compound Testing</p></div>
+    <div class="emp-card"><div class="emp-avatar">SH</div><h3>Dr. Sarah Holt</h3><p>Director of Biomedical Research</p></div>
+    <div class="emp-card"><div class="emp-avatar">RK</div><h3>Prof. Robert Kaine</h3><p>Head of Neuroscience &amp; Cognition</p></div>
+    <div class="emp-card"><div class="emp-avatar">LM</div><h3>Dr. Lisa Merrow</h3><p>Environmental Sciences Lead</p></div>
+    <div class="emp-card"><div class="emp-avatar">TC</div><h3>Thomas Crane</h3><p>Head of Materials Science</p></div>
+    <div class="emp-card"><div class="emp-avatar">AW</div><h3>Dr. Anne Whitfield</h3><p>Applied Chemistry Researcher</p></div>
+    <div class="emp-card redacted"><div class="emp-avatar">██</div><h3>██████████████</h3><p>Dept. E — Volunteer Programme</p></div>
+    <div class="emp-card redacted"><div class="emp-avatar">██</div><h3>██████████████</h3><p>Dept. E — Volunteer Programme</p></div>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <div class="section-label">Get In Touch</div>
+  <h2>Contact Us</h2>
+  <div class="contact-grid">
+    <div class="contact-info">
+      <p>We welcome enquiries from academic institutions, industry partners, and members of the public with legitimate research interests.</p>
+      <div class="contact-detail"><strong>Address</strong><span>Deimos Laboratories, 7 Ashford Gate, London, EC4X 9RZ</span></div>
+      <div class="contact-detail"><strong>Email</strong><span><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="a9cdccc0c4c6da87c5c8cbe9c1c6ddc4c8c0c587cac6c4">[email&#160;protected]</a></span></div>
+      <div class="contact-detail"><strong>Phone</strong><span>+44 (0)20 7946 0823</span></div>
+      <div class="contact-detail"><strong>Hours</strong><span>Monday – Friday, 9:00 – 17:30</span></div>
+    </div>
+    <div>
+      <div class="contact-form">
+        <input type="text" placeholder="Full Name">
+        <input type="email" placeholder="Email Address">
+        <input type="text" placeholder="Subject">
+        <textarea placeholder="Your message..."></textarea>
+        <button class="btn">Send Message</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="logo">Deimos <span>Laboratories</span></div>
+  <div>© 2019 Deimos Laboratories Ltd. All rights reserved.</div>
+  <div class="footer-links">
+    <a href="#about">Privacy Policy</a>
+    <a href="#about">Terms of Use</a>
+    <a href="#" id="staffPortalBtn" onclick="document.getElementById('adminModal').classList.add('active');document.getElementById('adminPass').value='';document.getElementById('passError').style.display='none';return false;">Staff Portal</a>
+  </div>
+</footer>
+
+<div id="arg-trigger">DL-19</div>
+
+<div class="modal-overlay" id="adminModal">
+  <div class="modal">
+    <button class="modal-close" id="modalCloseBtn" onclick="document.getElementById('adminModal').classList.remove('active')">✕</button>
+    <h3>Staff Portal Access</h3>
+    <p>This area is restricted to authorised Deimos Laboratories personnel only.</p>
+    <input type="password" id="adminPass" placeholder="Enter access code">
+    <div class="modal-error" id="passError">Access denied. Invalid credentials.</div>
+    <button class="btn" id="loginBtn" onclick="var p=document.getElementById('adminPass');if(p.value==='TheDemonHauntedWorld'){document.getElementById('adminModal').classList.remove('active');document.getElementById('adminPanel').classList.add('active');}else{document.getElementById('passError').style.display='block';p.value='';}">Login</button>
+  </div>
+</div>
+
+<div class="admin-panel" id="adminPanel">
+  <button class="admin-back" id="adminBackBtn" onclick="document.getElementById('adminPanel').classList.remove('active')">← Exit Portal</button>
+  <h2>DEIMOS LABORATORIES — INTERNAL STAFF PORTAL // DEPT. E CLEARANCE</h2>
+  <div class="admin-section">
+    <h3>System Log — November 2019</h3>
+    <div class="log-entry"><span class="timestamp">[2019-11-01 08:14:22] </span><span class="level-info">[INFO] </span>Dr. Vulevaton lab access granted. Dept. E — sublevel 3.</div>
+    <div class="log-entry"><span class="timestamp">[2019-11-01 09:33:07] </span><span class="level-info">[INFO] </span>Compound VLV-7 synthesis completed. Sample stored in refrigeration unit 4.</div>
+    <div class="log-entry"><span class="timestamp">[2019-11-02 11:05:43] </span><span class="level-warn">[WARN] </span>Animal test subject 14 displaying anomalous motor function. Flagged for review.</div>
+    <div class="log-entry"><span class="timestamp">[2019-11-02 14:28:11] </span><span class="level-warn">[WARN] </span>Energy discharge from test subject 14 — unexpected. Containment breach minor. No injuries.</div>
+    <div class="log-entry"><span class="timestamp">[2019-11-03 09:00:00] </span><span class="level-info">[INFO] </span>Human volunteer programme — participant cleared for Dept. E testing.</div>
+    <div class="log-entry"><span class="timestamp">[2019-11-03 13:17:55] </span><span class="level-warn">[WARN] </span>Volunteer exhibiting energy discharge of magnitude significantly exceeding animal test results. Dr. Vulevaton notes: "extraordinary".</div>
+    <div class="log-entry"><span class="timestamp">[2019-11-03 16:44:02] </span><span class="level-error">[ERROR] </span>CONTAINMENT FAILURE — sublevel 3. VLV-7 sample compromised. Contamination with secondary fluid confirmed.</div>
+    <div class="log-entry"><span class="timestamp">[2019-11-03 16:44:58] </span><span class="level-error">[ERROR] </span>EMERGENCY ALERT — unknown biological entity detected. Security notified.</div>
+    <div class="log-entry"><span class="timestamp">[2019-11-03 16:45:31] </span><span class="level-error">[ERROR] </span>COMMUNICATION LOST — sublevel 3.</div>
+    <div class="log-entry"><span class="timestamp">[2019-11-04 00:00:00] </span><span class="level-error">[ERROR] </span>ALL SYSTEMS OFFLINE.</div>
+  </div>
+  <div class="admin-section">
+    <h3>Restricted Document — VLV-7 Compound Summary</h3>
+    <div class="redacted-block">
+      <div class="log-entry">CLASSIFICATION: DEPT. E — EYES ONLY</div>
+      <div class="log-entry">Compound designation: VLV-7 (Vulevaton Liquid, iteration 7)</div>
+      <div class="log-entry">Composition: H₂O base, <span class="redact">████████████████████</span>, lichen extract, <span class="redact">████████████████████████████████████</span></div>
+      <div class="log-entry">Effect on biological subjects: Temporary amplification of <span class="redact">█████████████████</span> — duration approx. 9 hours post-ingestion.</div>
+      <div class="log-entry">Secondary effect (unintended): Interaction with <span class="redact">████████████</span> fluid produces <span class="redact">███████████████████████████████████████</span>.</div>
+      <div class="log-entry">Status: <span class="level-error">RESEARCH SUSPENDED — INCIDENT 04/11/2019</span></div>
+    </div>
+  </div>
+  <div class="admin-section">
+    <h3>Personnel Notes</h3>
+    <div class="log-entry">Dr. Vulevaton — <span class="level-error">STATUS UNKNOWN as of 04/11/2019</span></div>
+    <div class="log-entry">Volunteer participant — <span class="level-error">STATUS UNKNOWN as of 04/11/2019</span></div>
+    <div class="log-entry">All other Dept. E staff — <span class="level-error">UNRESPONSIVE</span></div>
+  </div>
+</div>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+  window.addEventListener('load', function() {
+    var adminNavBtn = document.getElementById('adminNavBtn');
+    var staffPortalBtn = document.getElementById('staffPortalBtn');
+    var modalCloseBtn = document.getElementById('modalCloseBtn');
+    var loginBtn = document.getElementById('loginBtn');
+    var adminBackBtn = document.getElementById('adminBackBtn');
+    var adminPass = document.getElementById('adminPass');
+
+    function openModal() {
+      document.getElementById('adminModal').classList.add('active');
+      adminPass.value = '';
+      document.getElementById('passError').style.display = 'none';
+      setTimeout(function() { adminPass.focus(); }, 100);
+    }
+
+    function closeModal() {
+      document.getElementById('adminModal').classList.remove('active');
+    }
+
+    function checkPass() {
+      if (adminPass.value === 'TheDemonHauntedWorld') {
+        closeModal();
+        document.getElementById('adminPanel').classList.add('active');
+      } else {
+        document.getElementById('passError').style.display = 'block';
+        adminPass.value = '';
+      }
+    }
+
+    adminNavBtn.addEventListener('click', function(e) { e.preventDefault(); openModal(); });
+    staffPortalBtn.addEventListener('click', function(e) { e.preventDefault(); openModal(); });
+    modalCloseBtn.addEventListener('click', closeModal);
+    loginBtn.addEventListener('click', checkPass);
+    adminBackBtn.addE
